@@ -1,43 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-#define f1(x,y,z) (85-6*y+z)/27.0
-#define f2(x,y,z) (72-6*x-2*z)/15.0
-#define f3(x,y,z) (110-x-y)/54.0
-
 int main()
-{   
+{
 
-    float e;
-    cout<<"Tolarence : ";
-    cin>>e;
-    
-    float x0=0,y0=0,z0=0;
-    float x,y,z;
-    int e1,e2,e3;
-    int itr=0;
-    
-    do
-    {
-        x=f1(x0,y0,z0);
-        y=f2(x0,y0,z0);
-        z=f3(x0,y0,z0);
-        itr++;
+double x=0,y=0,z=0;
+double x1,y1,z1;
+double tol=1e-6;
+int itr=0;
 
-        cout << itr << "   x=" << x << "   y=" << y << "   z=" << z << endl;
-        
-        e1=abs(x-x0);
-        e2=abs(y-y0);
-        e3=abs(z-z0);
+while(true)
+{
+    x1=(12-y-z)/10.0;
+    y1 = (13 - 2*x - z) / 10.0;
+    z1 = (14 - 2*x - 2*y) / 10.0;
+     itr++;
 
-        x0=x;
-        y0=y;
-        z0=z;
+    if(fabs(x1-x)< tol&& fabs(y1 - y) < tol && fabs(z1 - z) < tol)break;
 
-    } while (e1>e && e2>e && e3>e);
+    x=x1;
+    y=y1;
+    z=z1;
+   
+}
+cout<<fixed<<setprecision(6);
+cout<<"Jacobi Result : x= "<<x<<",y= "<<y<<", z= "<<z<<endl;
+cout<<"Iteration : "<<itr<<endl;
     
-    
-    cout << "\nRoot: x=" << x << "  y=" << y << "  z=" << z << endl;
 
     return 0;
 }

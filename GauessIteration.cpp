@@ -1,43 +1,31 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-#define f1(x,y,z) (17-y+2*z)/20.0
-#define f2(x,y,z) (72-6*x-2*z)/15.0
-#define f3(x,y,z) (110-x-y)/54.0
+int main() {
+    double x = 0, y = 0, z = 0;  
+    double tol = 1e-6;
+    int itr = 0;
 
-int main()
-{   
+    while (true) {
+        double x_old = x, y_old = y, z_old = z;
 
-    float e;
-    cout<<"Tolarence : ";
-    cin>>e;
-    
-    float x0=0,y0=0,z0=0;
-    float x,y,z;
-    int e1,e2,e3;
-    int itr=0;
-    
-    do
-    {
-        x=f1(x,y,z);
-        y=f2(x,y,z);
-        z=f3(x,y,z);
+        
+        x = (12 - y - z) / 10.0;           
+        y = (13 - 2*x - z) / 10.0;        
+        z = (14 - 2*x - 2*y) / 10.0;      
+
         itr++;
 
-        cout << itr << "   x=" << x << "   y=" << y << "   z=" << z << endl;
-        
-        e1=abs(x-x0);
-        e2=abs(y-y0);
-        e3=abs(z-z0);
+       
+        if (fabs(x - x_old) < tol && fabs(y - y_old) < tol && fabs(z - z_old) < tol)
+            break;
+    }
 
-        x0=x;
-        y0=y;
-        z0=z;
-
-    } while (e1>e || e2>e || e3>e);
-    
-    
-    cout << "\nRoot: x=" << x << "  y=" << y << "  z=" << z << endl;
+    cout << fixed << setprecision(6);
+    cout << "Gauss-Seidel Result : x= " << x
+         << ", y= " << y
+         << ", z= " << z << endl;
+    cout << "Iteration : " << itr << endl;
 
     return 0;
 }

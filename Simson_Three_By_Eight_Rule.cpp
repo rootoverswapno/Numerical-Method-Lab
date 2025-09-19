@@ -4,7 +4,7 @@ double fun(double x)
 {
     return 1.0/(1+x*x);
 }
-double simpson13(double a,double b,int n)
+double simpson38(double a,double b,int n)
 {
     if(n%3!=0)
     {
@@ -40,7 +40,7 @@ int main()
    cout<<"Enter number of intervals n (must be even) : ";
    cin>>n;
 
-   double result=simpson13(a,b,n);
+   double result=simpson38(a,b,n);
 
    if(result!=-1)
    cout << "Result of integration = " << result << endl;
